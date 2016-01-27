@@ -64,10 +64,11 @@ void ListaSimples::displayList()
 
         while(tmp!=NULL){
 
-            std::cout << "Dado: "   << tmp->data
+            /*std::cout << "Dado: "   << tmp->data
                       << std::endl;
             std::cout <<   "Naipe: "  << tmp->suit.toStdString()
-                      << std::endl;
+                      << std::endl;*/
+            std::cout << tmp->data << tmp->suit.toStdString();
             tmp = tmp->next;
         }
 

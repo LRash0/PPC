@@ -15,7 +15,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     listasimlples.cpp \
-    node.cpp
+    node.cpp \
+    carta.cpp
 
 HEADERS  += mainwindow.h \
     listasimples.h \
