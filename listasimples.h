@@ -14,9 +14,12 @@ class ListaSimples
         void releaseNode(int, QString);
         void displayList();
 
-        Node *getFirst();
 
+        Node *getFirst();
+        Node *walkQueue(int);
+        int getCount();
         bool isEmpty();
+
 
     private:
         Node *first;
