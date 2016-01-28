@@ -13,6 +13,7 @@ class ListaSimples
         void searchNode(int);
         void releaseNode(int, QString);
         void displayList();
+        void deleteAmountOfCards(int);
 
 
         Node *getFirst();

@@ -148,3 +148,13 @@ Node *ListaSimples::getFirst()
 {
     return first;
 }
+
+void ListaSimples::deleteAmountOfCards(int amount)
+{
+    Node *tmp = first;
+    for(int i = 0 ; i < amount ; ++i){
+        first = first->next;
+        delete tmp;
+        tmp = first;
+    }
+}

@@ -12,8 +12,11 @@ class Carta
     void setBaralho();
     void setDistribuirCarta();
     void setEmbaralhar();
-    void setCriarCarta();
+    void setCriarCartas(int,int,int);
     void mostrarBaralho();
+    void distribuirCartas(ListaSimples*,int);
+
+
 
     private:
 

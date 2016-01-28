@@ -24,16 +24,24 @@ void Carta::mostrarBaralho()
     baralho->displayList();
 }
 
-//Criando o baralho
 void Carta::setBaralho()
 {
-    QString naipe[] = {"O","C","E","P"}; // O = Ouro, C = Copas, E = Espadas, P = Paus;
     int numero = 1;
     int qtdNaipe = 4;
+    int qtdDeNumeros = 7;
+    setCriarCartas(numero,qtdNaipe,qtdDeNumeros);
+}
+
+//Criando o baralho
+void Carta::setCriarCartas(int numero,int qtdNaipe,int qtdDeNumero)
+{
+    QString naipe[] = {"O","C","E","P"}; // O = Ouro, C = Copas, E = Espadas, P = Paus;
+//    int numero = 1;
+//    int qtdNaipe = 4;
 
 
     //Criando o baralho
-    while(numero<7){
+    while(numero<qtdDeNumero){
 
         for(int i = 0 ; i < qtdNaipe ; ++i ){
 
@@ -79,6 +87,20 @@ void Carta::setEmbaralhar()
         aux = aux->next;
     }
 
+
+
+}
+
+void Carta::distribuirCartas(ListaSimples *cards,int amountOfCards)
+{
+    Node *tmp = baralho->getFirst();
+
+    for(int i = 0 ; i < amountOfCards ; ++i){
+        cards->addNode(tmp->data,tmp->suit);
+        tmp = tmp->next;
+    }
+
+    baralho->deleteAmountOfCards(amountOfCards);
 
 
 }

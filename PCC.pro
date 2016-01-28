@@ -21,6 +21,7 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     listasimples.h \
     node.h \
-    carta.h
+    carta.h \
+    jogador.h
 
 FORMS    += mainwindow.ui
