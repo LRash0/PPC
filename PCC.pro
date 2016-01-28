@@ -16,7 +16,8 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     listasimlples.cpp \
     node.cpp \
-    carta.cpp
+    carta.cpp \
+    jogador.cpp
 
 HEADERS  += mainwindow.h \
     listasimples.h \

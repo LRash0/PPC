@@ -6,11 +6,21 @@
 class Jogador
 {
     public:
-        Jogador();
+        Jogador(QString,int);
+
+        void maoJogador(Carta *);
+        void descartarCarta(ListaSimples*);
+        void puxarCarta(ListaSimples*);
+        void mostrarMao();
+        static bool fimDoJogo;
 
     private:
+        QString nomeJogador;
         ListaSimples *mao;
-        int qtdDeCartas;
+        int qtdDeJogadas;
+        int tamanhoDaMao;
+
+
 
 };
 

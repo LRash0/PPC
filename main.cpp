@@ -4,6 +4,7 @@
 #include "listasimples.h"
 #include "carta.h"
 #include <iostream>
+#include "jogador.h"
 using namespace std;
 
 
@@ -22,7 +23,7 @@ int main(int argc, char *argv[])
     teste->releaseNode(13,"paus");
     teste->displayList();*/
 
-    Carta *teste = new Carta();
+    /*Carta *teste = new Carta();
     ListaSimples *Joao      = new ListaSimples();
     ListaSimples *Carol     = new ListaSimples();
     ListaSimples *Ana       = new ListaSimples();
@@ -30,9 +31,9 @@ int main(int argc, char *argv[])
     ListaSimples *Fila1  	= new ListaSimples();
     ListaSimples *Fila2		= new ListaSimples();
     ListaSimples *Fila3 	= new ListaSimples();
-    ListaSimples *Fila4 	= new ListaSimples();
+    ListaSimples *Fila4 	= new ListaSimples();*/
 
-    teste->setBaralho();
+    /*teste->setBaralho();
     cout << "Antes de embaralhar..." << endl;
     teste->mostrarBaralho();
     cout << "Embaralhando..." << endl;
@@ -67,11 +68,17 @@ int main(int argc, char *argv[])
     teste->distribuirCartas(Fila4,2);
     Fila4->displayList();
     cout << "Cartas que restam" << endl;
-    teste->mostrarBaralho();
+    teste->mostrarBaralho();*/
 
 
 
-
+    Carta *baralho = new Carta();
+    int maoDe = 4;
+    Jogador *Joao = new Jogador("Joao",maoDe);
+    baralho->setBaralho();
+    baralho->setEmbaralhar();
+    Joao->maoJogador(baralho);
+    Joao->mostrarMao();
 
 
 
