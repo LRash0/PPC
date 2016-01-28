@@ -55,17 +55,18 @@ void Carta::setEmbaralhar()
     int tamanho = baralho->getCount();
     int aleatorio = 0;
     srand(time(0)); //Para que rand() gere números aléatorios
-    //Embaralhando um deck auxiliar
-    while(tamanho!=1){
 
-        cout << "Tamanho: " << tamanho << endl;
+    //Embaralhando um deck auxiliar
+    while(tamanho!=0){
+
+//        cout << "Tamanho: " << tamanho << endl;
         aleatorio = rand() % tamanho;
         aux = baralho->walkQueue(aleatorio);
-        cout << "Carta escolhida: " << aux->data << aux->suit.toStdString() << endl;
+//        cout << "Carta escolhida: " << aux->data << aux->suit.toStdString() << endl;
         tmp->addNode(aux->data,aux->suit);
-        cout << "Tmp adicionou:" << aux->data << aux->suit.toStdString() << endl;
+//        cout << "Tmp adicionou:" << aux->data << aux->suit.toStdString() << endl;
         baralho->releaseNode(aux->data,aux->suit);
-        baralho->displayList();
+//        baralho->displayList();
         tamanho = baralho->getCount();
 
     }

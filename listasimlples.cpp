@@ -77,6 +77,7 @@ void ListaSimples::displayList()
     }
 }
 
+//Apaga um nó especifico na lista
 void ListaSimples::releaseNode(int data,QString suit)
 {
     if(isEmpty()){
@@ -87,9 +88,11 @@ void ListaSimples::releaseNode(int data,QString suit)
         Node *prev = NULL;
         bool isFirst = (tmp->data==data) && (tmp->suit==suit);
 
+
         if(isFirst){
             first = first->next;
             delete tmp;
+
         //Senão for no o primeiro,procurar no restante da fila
         }else{
 
@@ -101,7 +104,6 @@ void ListaSimples::releaseNode(int data,QString suit)
                 if(tmp->data==data){
 
                     if(tmp->suit==suit){
-
                         break;
                     }//Sai do laço se achar o valor
 
