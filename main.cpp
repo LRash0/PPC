@@ -78,11 +78,12 @@ int main(int argc, char *argv[])
     Jogador *Carol  = new Jogador("Carol",maoDe,tamanhoDaFila,2);
     Jogador *Ana    = new Jogador("Ana",maoDe,tamanhoDaFila,3);
     Jogador *Beto   = new Jogador("Beto",maoDe,tamanhoDaFila,4);
+    Jogador *ManipulaFila = new Jogador();
 
-    ListaSimples *Fila1 = new ListaSimples();
+    /*ListaSimples *Fila1 = new ListaSimples();
     ListaSimples *Fila2	= new ListaSimples();
     ListaSimples *Fila3 = new ListaSimples();
-    ListaSimples *Fila4 = new ListaSimples();
+    ListaSimples *Fila4 = new ListaSimples();*/
 
     //Criando o baralho e embaralhando
     baralho->setBaralho();
@@ -109,28 +110,28 @@ int main(int argc, char *argv[])
     cout << endl << endl << endl;
 
     baralho->mostrarBaralho();
-
+    cout << endl;
     //Inicializando as filas
-    baralho->distribuirCartas(Fila1,tamanhoDaFila);
+    baralho->distribuirCartas(ManipulaFila->Fila1,tamanhoDaFila);
     cout << "Fila 1 " << endl;
-    Fila1->displayList();
+    ManipulaFila->Fila1->displayList();
     cout << endl << endl << endl;
-    baralho->distribuirCartas(Fila2,tamanhoDaFila);
+    baralho->distribuirCartas(ManipulaFila->Fila2,tamanhoDaFila);
     cout << "Fila 2 " << endl;
-    Fila2->displayList();
+    ManipulaFila->Fila2->displayList();
     cout << endl << endl << endl;
-    baralho->distribuirCartas(Fila3,tamanhoDaFila);
+    baralho->distribuirCartas(ManipulaFila->Fila3,tamanhoDaFila);
     cout << "Fila 3 " << endl;
-    Fila3->displayList();
+    ManipulaFila->Fila3->displayList();
     cout << endl << endl << endl;
-    baralho->distribuirCartas(Fila4,tamanhoDaFila);
+    baralho->distribuirCartas(ManipulaFila->Fila4,tamanhoDaFila);
     cout << "Fila 4 " << endl;
-    Fila4->displayList();
+    ManipulaFila->Fila4->displayList();
     cout << endl << endl << endl;
     baralho->mostrarBaralho();
 
 
-    while(!(Jogador::getFim())){
+    /*while(!(Jogador::getFim())){
 
     Joao->puxarCarta(Fila4);
 //    Joao->mostrarMao();
@@ -172,7 +173,7 @@ int main(int argc, char *argv[])
     cout << Joao->getQtdJogadas() << endl;
     cout << Carol->getQtdJogadas() << endl;
     cout << Ana->getQtdJogadas() << endl;
-    cout << Beto->getQtdJogadas() << endl;
+    cout << Beto->getQtdJogadas() << endl;*/
 
 
     //QApplication a(argc, argv);

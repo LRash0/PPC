@@ -5,19 +5,30 @@
 #include <cstdio>
 using namespace std;
 
-
+//Inicializando variáveis static
 bool Jogador::fimDoJogo = false;
+ListaSimples *Jogador::Fila1 = new ListaSimples();
+ListaSimples *Jogador::Fila2 = new ListaSimples();
+ListaSimples *Jogador::Fila3 = new ListaSimples();
+ListaSimples *Jogador::Fila4 = new ListaSimples();
 
 bool Jogador::getFim()
 {
     return fimDoJogo;
 }
 
-Jogador::Jogador(QString nomeJogador,int tamanhoDaMao,int tamanhoDaFila)
+
+Jogador::Jogador()
+{
+
+}
+
+Jogador::Jogador(QString nomeJogador,int tamanhoDaMao,int tamanhoDaFila,int id)
 {
     this->nomeJogador = nomeJogador;
     this->tamanhoDaMao = tamanhoDaMao;
     this->tamanhoDaFila = tamanhoDaFila;
+    this->id = id;
     qtdDeJogadas = 0;
     mao = new ListaSimples();
 
@@ -166,4 +177,10 @@ void Jogador::verificarSeGanhou()
 int Jogador::getQtdJogadas()
 {
     return qtdDeJogadas;
+}
+
+
+void Jogador::run()
+{
+
 }
