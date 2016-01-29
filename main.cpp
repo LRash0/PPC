@@ -74,10 +74,10 @@ int main(int argc, char *argv[])
     int tamanhoDaFila = 2;
     Carta *baralho = new Carta();
 
-    Jogador *Joao   = new Jogador("Joao",maoDe,tamanhoDaFila);
-    Jogador *Carol  = new Jogador("Carol",maoDe,tamanhoDaFila);
-    Jogador *Ana    = new Jogador("Ana",maoDe,tamanhoDaFila);
-    Jogador *Beto   = new Jogador("Beto",maoDe,tamanhoDaFila);
+    Jogador *Joao   = new Jogador("Joao",maoDe,tamanhoDaFila,1);
+    Jogador *Carol  = new Jogador("Carol",maoDe,tamanhoDaFila,2);
+    Jogador *Ana    = new Jogador("Ana",maoDe,tamanhoDaFila,3);
+    Jogador *Beto   = new Jogador("Beto",maoDe,tamanhoDaFila,4);
 
     ListaSimples *Fila1 = new ListaSimples();
     ListaSimples *Fila2	= new ListaSimples();
