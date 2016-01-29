@@ -3,6 +3,15 @@
 #include <ctime>
 #include <cstdlib>
 #include <cstdio>
+#include <QMutex>
+QMutex mutex14;
+QMutex mutex12;
+QMutex mutex23;
+QMutex mutex34;
+QMutex acabou;
+QMutex controle;
+QMutex verifica;
+
 using namespace std;
 
 //Inicializando variáveis static
@@ -43,24 +52,31 @@ void Jogador::maoJogador(Carta *baralho)
 
 void Jogador::mostrarMao()
 {
+    controle.lock();
     cout << "Mao de:" << this->nomeJogador.toStdString() << endl;
     mao->displayList();
     cout << endl;
 //    cout << "Max:" << this->verficarMao() << endl;
 //    getchar();
+    controle.unlock();
 }
 
 void Jogador::puxarCarta(ListaSimples *filaAtual)
 {
+
+
+
+
     int qtdDeItens = filaAtual->getCount();
     int qtdDeCartas = this->mao->getCount();
     //Não permiti jogador atual puxar carta se: a fila tiver apenas uma carta
     //Ou a quantidade de cartas na sua mao for maior que 4
     if(qtdDeItens < tamanhoDaFila || qtdDeCartas > tamanhoDaMao){
 
-        cout << "Não pode puxar" << endl;
+//        cout << "Não pode puxar" << endl;
 
     }else{
+
         //Obtem a primeira carta da fila atual
         Node *tmp = filaAtual->getFirst();
         //Insere na mao do jogador atual
@@ -68,25 +84,41 @@ void Jogador::puxarCarta(ListaSimples *filaAtual)
         //Remove a carta da fila
         filaAtual->releaseNode(tmp->data,tmp->suit);
         ++qtdDeJogadas;
+
     }
+
+
 
 }
 
 void Jogador::descartarCarta(ListaSimples *filaAtual)
 {
-    int qtdDeItens = filaAtual->getCount();
-//    int qtdDeCartas = this->mao->getCount();
 
+    int qtdDeItens = filaAtual->getCount();
+    //    int qtdDeCartas = this->mao->getCount();
+    //Verifica se a pilha tem espaço diposnível
+    //Se a quantidade de itens da fila for igual ao tamanho,não pode descartar na fila
     if((qtdDeItens == tamanhoDaFila)){
-        cout << "Não pode descartar!!" << endl;
+//        cout << "Não pode descartar!!" << endl;
+
     }else{
+
         Node *tmp = this->getCarta();
         filaAtual->addNode(tmp->data,tmp->suit);
         this->mao->releaseNode(tmp->data,tmp->suit);
         ++qtdDeJogadas;
+         verifica.lock();
+         this->verificarSeGanhou();
+         verifica.unlock();
+
+
     }
 
-    this->verificarSeGanhou();
+    //Verifica se alguém ganhou;
+//    verifica.lock();
+//    this->verificarSeGanhou();
+//    verifica.unlock();
+
 
 }
 
@@ -163,14 +195,18 @@ Node *Jogador::getCarta()
 void Jogador::verificarSeGanhou()
 {
     //Verifica se alguem ganhou
+    acabou.lock();
     int fim = this->verficarMao();
     if((fim==4)){
-        Jogador::fimDoJogo = true;
+
+        this->fimDoJogo = true;
         cout << "Ganhou!!!!" << endl;
         cout << this->nomeJogador.toStdString() << endl;
         this->mostrarMao();
-        getchar();
+
+
     }
+    acabou.unlock();
 
 }
 
@@ -183,4 +219,127 @@ int Jogador::getQtdJogadas()
 void Jogador::run()
 {
 
+
+        if(this->id==1){
+            this->puxarCartaF(this->id);
+            this->descartarCartaF(this->id);
+        }
+
+        if(this->id==2){
+            this->puxarCartaF(this->id);
+            this->descartarCartaF(this->id);
+        }
+
+        if(this->id==3){
+            this->puxarCartaF(this->id);
+            this->descartarCartaF(this->id);
+        }
+
+        if(this->id==4){
+            this->puxarCartaF(this->id);
+            this->descartarCartaF(this->id);
+        }
+
+        if(!(this->getFim())){
+            this->exit();
+        }
+
+
+}
+
+void Jogador::puxarCartaF(int id)
+{
+    if(id==1){
+        if(!(this->getFim())){
+        mutex14.lock();
+        puxarCarta(Fila4);        
+//        Fila4->displayList();
+//        this->mostrarMao();
+        mutex14.unlock();
+        }else{
+            this->exit(0);
+        }
+    }
+    if(id==2){
+        if(!(this->getFim())){
+        mutex12.lock();
+        puxarCarta(Fila1);
+//        this->mostrarMao();
+        mutex12.unlock();
+        }else{
+            this->exit(0);
+        }
+
+    }
+
+    if(id==3){
+        if(!(this->getFim())){
+        mutex23.lock();
+        puxarCarta(Fila2);
+//        this->mostrarMao();
+        mutex23.unlock();
+        }else{
+            this->exit(0);
+        }
+    }
+
+    if(id==4){
+        if(!(this->getFim())){
+        mutex34.lock();
+        puxarCarta(Fila3);
+//        this->mostrarMao();
+        mutex34.unlock();
+        }else{
+            this->exit(0);
+        }
+
+    }
+}
+
+void Jogador::descartarCartaF(int id)
+{
+    if(id==1){
+        if(!(this->getFim())){
+        mutex12.lock();
+        descartarCarta(Fila1);
+//        this->mostrarMao();
+        mutex12.unlock();
+        }else{
+            this->exit(0);
+        }
+
+    }
+
+    if(id==2){
+        if(!(this->getFim())){
+        mutex23.lock();
+        descartarCarta(Fila2);
+//        this->mostrarMao();
+        mutex23.unlock();
+        }else{
+            this->exit(0);
+        }
+    }
+
+    if(id==3){
+        if(!(this->getFim())){
+        mutex34.lock();
+        descartarCarta(Fila3);
+//        this->mostrarMao();
+        mutex34.unlock();
+        }else{
+            this->exit(0);
+        }
+    }
+
+    if(id==4){
+        if(!(this->getFim())){
+        mutex14.lock();
+        descartarCarta(Fila4);
+//        this->mostrarMao();
+        mutex14.unlock();
+        }else{
+            this->exit(0);
+    }
+    }
 }

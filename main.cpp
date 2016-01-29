@@ -109,26 +109,28 @@ int main(int argc, char *argv[])
     Beto->mostrarMao();
     cout << endl << endl << endl;
 
-    baralho->mostrarBaralho();
-    cout << endl;
+//    baralho->mostrarBaralho();
+//    cout << endl;
     //Inicializando as filas
     baralho->distribuirCartas(ManipulaFila->Fila1,tamanhoDaFila);
-    cout << "Fila 1 " << endl;
-    ManipulaFila->Fila1->displayList();
-    cout << endl << endl << endl;
+//    cout << "Fila 1 " << endl;
+//    ManipulaFila->Fila1->displayList();
+//    cout << endl << endl << endl;
     baralho->distribuirCartas(ManipulaFila->Fila2,tamanhoDaFila);
-    cout << "Fila 2 " << endl;
-    ManipulaFila->Fila2->displayList();
-    cout << endl << endl << endl;
+//    cout << "Fila 2 " << endl;
+//    ManipulaFila->Fila2->displayList();
+//    cout << endl << endl << endl;
     baralho->distribuirCartas(ManipulaFila->Fila3,tamanhoDaFila);
-    cout << "Fila 3 " << endl;
-    ManipulaFila->Fila3->displayList();
-    cout << endl << endl << endl;
+//    cout << "Fila 3 " << endl;
+//    ManipulaFila->Fila3->displayList();
+//    cout << endl << endl << endl;
     baralho->distribuirCartas(ManipulaFila->Fila4,tamanhoDaFila);
-    cout << "Fila 4 " << endl;
-    ManipulaFila->Fila4->displayList();
-    cout << endl << endl << endl;
-    baralho->mostrarBaralho();
+//    cout << "Fila 4 " << endl;
+//    ManipulaFila->Fila4->displayList();
+//    cout << endl << endl << endl;
+//    baralho->mostrarBaralho();
+
+
 
 
     /*while(!(Jogador::getFim())){
@@ -175,6 +177,20 @@ int main(int argc, char *argv[])
     cout << Ana->getQtdJogadas() << endl;
     cout << Beto->getQtdJogadas() << endl;*/
 
+    while(!(Joao->getFim())){
+        Joao->start();
+        Carol->start();
+        Ana->start();
+        Beto->start();
+    }
+
+
+    qDebug("saiu");
+
+    cout << Joao->getQtdJogadas() << endl;
+    cout << Carol->getQtdJogadas() << endl;
+    cout << Ana->getQtdJogadas() << endl;
+    cout << Beto->getQtdJogadas() << endl;
 
     //QApplication a(argc, argv);
     //MainWindow w;

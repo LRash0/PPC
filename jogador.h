@@ -14,6 +14,8 @@ class Jogador : public QThread
         void puxarCarta(ListaSimples*);
         void mostrarMao();
         void verificarSeGanhou();
+        void puxarCartaF(int);
+        void descartarCartaF(int);
         void run();
 
         int verficarMao();
