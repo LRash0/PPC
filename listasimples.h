@@ -18,6 +18,7 @@ class ListaSimples
 
         Node *getFirst();
         Node *walkQueue(int);
+
         int getCount();
         bool isEmpty();
 

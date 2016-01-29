@@ -5,6 +5,8 @@
 #include "carta.h"
 #include <iostream>
 #include "jogador.h"
+#include <cstdio>
+#include <cstdlib>
 using namespace std;
 
 
@@ -28,10 +30,7 @@ int main(int argc, char *argv[])
     ListaSimples *Carol     = new ListaSimples();
     ListaSimples *Ana       = new ListaSimples();
     ListaSimples *Beto      = new ListaSimples();
-    ListaSimples *Fila1  	= new ListaSimples();
-    ListaSimples *Fila2		= new ListaSimples();
-    ListaSimples *Fila3 	= new ListaSimples();
-    ListaSimples *Fila4 	= new ListaSimples();*/
+    */
 
     /*teste->setBaralho();
     cout << "Antes de embaralhar..." << endl;
@@ -71,16 +70,109 @@ int main(int argc, char *argv[])
     teste->mostrarBaralho();*/
 
 
-
-    Carta *baralho = new Carta();
     int maoDe = 4;
-    Jogador *Joao = new Jogador("Joao",maoDe);
+    int tamanhoDaFila = 2;
+    Carta *baralho = new Carta();
+
+    Jogador *Joao   = new Jogador("Joao",maoDe,tamanhoDaFila);
+    Jogador *Carol  = new Jogador("Carol",maoDe,tamanhoDaFila);
+    Jogador *Ana    = new Jogador("Ana",maoDe,tamanhoDaFila);
+    Jogador *Beto   = new Jogador("Beto",maoDe,tamanhoDaFila);
+
+    ListaSimples *Fila1 = new ListaSimples();
+    ListaSimples *Fila2	= new ListaSimples();
+    ListaSimples *Fila3 = new ListaSimples();
+    ListaSimples *Fila4 = new ListaSimples();
+
+    //Criando o baralho e embaralhando
     baralho->setBaralho();
     baralho->setEmbaralhar();
+    //Distribuindo as cartas entre os jogadores
+    //--------------------------------------------------Joao
     Joao->maoJogador(baralho);
     Joao->mostrarMao();
+    cout << endl << endl << endl;
+    baralho->mostrarBaralho();
+    //--------------------------------------------------Carol
+    Carol->maoJogador(baralho);
+    Carol->mostrarMao();
+    cout << endl << endl << endl;
+    baralho->mostrarBaralho();
+    //--------------------------------------------------Ana
+    Ana->maoJogador(baralho);
+    Ana->mostrarMao();
+    cout << endl << endl << endl;
+    //--------------------------------------------------Beto
+    baralho->mostrarBaralho();
+    Beto->maoJogador(baralho);
+    Beto->mostrarMao();
+    cout << endl << endl << endl;
+
+    baralho->mostrarBaralho();
+
+    //Inicializando as filas
+    baralho->distribuirCartas(Fila1,tamanhoDaFila);
+    cout << "Fila 1 " << endl;
+    Fila1->displayList();
+    cout << endl << endl << endl;
+    baralho->distribuirCartas(Fila2,tamanhoDaFila);
+    cout << "Fila 2 " << endl;
+    Fila2->displayList();
+    cout << endl << endl << endl;
+    baralho->distribuirCartas(Fila3,tamanhoDaFila);
+    cout << "Fila 3 " << endl;
+    Fila3->displayList();
+    cout << endl << endl << endl;
+    baralho->distribuirCartas(Fila4,tamanhoDaFila);
+    cout << "Fila 4 " << endl;
+    Fila4->displayList();
+    cout << endl << endl << endl;
+    baralho->mostrarBaralho();
 
 
+    while(!(Jogador::getFim())){
+
+    Joao->puxarCarta(Fila4);
+//    Joao->mostrarMao();
+    //getchar();getchar();
+
+    Carol->puxarCarta(Fila1);
+//    Carol->mostrarMao();
+   // getchar();getchar();
+
+    Ana->puxarCarta(Fila2);
+//    Ana->mostrarMao();
+    //getchar();getchar();
+
+    Beto->puxarCarta(Fila3);
+//    Beto->mostrarMao();
+    //getchar();getchar();
+
+    Joao->descartarCarta(Fila1);
+//    Joao->mostrarMao();
+    //getchar();getchar();
+
+    Carol->descartarCarta(Fila2);
+//    Carol->mostrarMao();
+    //getchar();getchar();
+
+
+    Ana->descartarCarta(Fila3);
+//    Ana->mostrarMao();
+    //getchar();getchar();
+
+
+    Beto->descartarCarta(Fila4);
+//    Beto->mostrarMao();
+    //getchar();getchar();
+
+}
+
+
+    cout << Joao->getQtdJogadas() << endl;
+    cout << Carol->getQtdJogadas() << endl;
+    cout << Ana->getQtdJogadas() << endl;
+    cout << Beto->getQtdJogadas() << endl;
 
 
     //QApplication a(argc, argv);

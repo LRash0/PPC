@@ -68,8 +68,8 @@ void ListaSimples::displayList()
                       << std::endl;
             std::cout <<   "Naipe: "  << tmp->suit.toStdString()
                       << std::endl;*/
-            std::cout << tmp->data << tmp->suit.toStdString()
-                      <<   std::endl;
+            std::cout << tmp->data << tmp->suit.toStdString();
+                      //<<   std::endl;
 
             tmp = tmp->next;
         }
