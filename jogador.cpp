@@ -11,7 +11,7 @@ QMutex mutex34;
 QMutex acabou;
 QMutex controle;
 QMutex verifica;
-
+int qtdCartas[7] = {0};
 using namespace std;
 
 //Inicializando variáveis static
@@ -46,32 +46,32 @@ Jogador::Jogador(QString nomeJogador,int tamanhoDaMao,int tamanhoDaFila,int id)
 
 void Jogador::maoJogador(Carta *baralho)
 {
+//    qDebug("Erro 8");
     baralho->distribuirCartas(this->mao,tamanhoDaMao);
 
 }
 
 void Jogador::mostrarMao()
 {
-    controle.lock();
+//    qDebug("Erro 7");
+//    controle.lock();
     cout << "Mao de:" << this->nomeJogador.toStdString() << endl;
     mao->displayList();
     cout << endl;
 //    cout << "Max:" << this->verficarMao() << endl;
 //    getchar();
-    controle.unlock();
+//    controle.unlock();
 }
 
 void Jogador::puxarCarta(ListaSimples *filaAtual)
 {
-
-
-
-
+//    qDebug("Erro 6");
     int qtdDeItens = filaAtual->getCount();
     int qtdDeCartas = this->mao->getCount();
     //Não permiti jogador atual puxar carta se: a fila tiver apenas uma carta
     //Ou a quantidade de cartas na sua mao for maior que 4
-    if(qtdDeItens < tamanhoDaFila || qtdDeCartas > tamanhoDaMao){
+//    if(qtdDeItens < tamanhoDaFila || qtdDeCartas > tamanhoDaMao){
+        if(qtdDeCartas > tamanhoDaMao || filaAtual->isEmpty()){
 
 //        cout << "Não pode puxar" << endl;
 
@@ -93,7 +93,7 @@ void Jogador::puxarCarta(ListaSimples *filaAtual)
 
 void Jogador::descartarCarta(ListaSimples *filaAtual)
 {
-
+//    qDebug("Erro 5");
     int qtdDeItens = filaAtual->getCount();
     //    int qtdDeCartas = this->mao->getCount();
     //Verifica se a pilha tem espaço diposnível
@@ -102,7 +102,6 @@ void Jogador::descartarCarta(ListaSimples *filaAtual)
 //        cout << "Não pode descartar!!" << endl;
 
     }else{
-
         Node *tmp = this->getCarta();
         filaAtual->addNode(tmp->data,tmp->suit);
         this->mao->releaseNode(tmp->data,tmp->suit);
@@ -125,11 +124,9 @@ void Jogador::descartarCarta(ListaSimples *filaAtual)
 int Jogador::verficarMao()
 {
     //Contando a partir de 1 até 6.Como vetor começa com 0,criar um vetor de 7 posições
-    int qtdCartas[7] = {0};
     Node *tmp = mao->getFirst();
     int max = 0;
-
-
+//    qDebug("Erro 4");
     while(tmp!=NULL){
 
         if(tmp->data==1){
@@ -170,9 +167,15 @@ int Jogador::verficarMao()
     max = qtdCartas[1];
 
     for(int i = 2 ; i < 7;++i){
+//        qDebug("Erro 3");
         if(qtdCartas[i]>max){
             max = qtdCartas[i];
         }
+    }
+
+    for(int i = 0 ; i < 7 ; ++i){
+        qtdCartas[i] = 0;
+//        qDebug("Erro 2");
     }
 
     return max;
@@ -183,9 +186,10 @@ Node *Jogador::getCarta()
 {
     srand((int)time(0));
 
-    int aleatorio = rand() % (tamanhoDaMao + 1);
+    int aleatorio = rand() % (tamanhoDaMao);
 //    cout << aleatorio << endl;
 //    getchar();
+//    qDebug("Erro 1");
     Node *tmp = this->mao->walkQueue(aleatorio);
 
     return tmp;
@@ -219,7 +223,7 @@ int Jogador::getQtdJogadas()
 void Jogador::run()
 {
 
-
+        //mao de 5
         if(this->id==1){
             this->puxarCartaF(this->id);
             this->descartarCartaF(this->id);
